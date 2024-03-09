@@ -5,7 +5,6 @@ import java.math.RoundingMode;
 
 public class Triangle extends Shape
 {
-
     public Triangle(BigDecimal sideOneLength, BigDecimal sideTwoLength)
     {
         super(sideOneLength, sideTwoLength);

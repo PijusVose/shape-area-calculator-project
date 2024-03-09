@@ -33,8 +33,7 @@ public class IOManager
         System.out.println("2 for Triangle");
         System.out.println("3 for Circle");
 
-        String rawInput = scanner.nextLine();
-        shapeIndex = Integer.parseInt(rawInput);
+        getShapeInput();
     }
 
     public static void inputShapeInfo() throws UnknownShapeException
@@ -43,25 +42,68 @@ public class IOManager
         {
             case 1:
                 System.out.println("What is the edge length in centimeters?");
-                data1 = scanner.nextBigDecimal();
+                data1 = getBigDecimalInput();
 
                 break;
             case 2:
                 System.out.println("What is the base length of the triangle in centimeters?");
-                data1 = scanner.nextBigDecimal();
+                data1 = getBigDecimalInput();
                 System.out.println("What is the height of the triangle in centimeters?");
-                data2 = scanner.nextBigDecimal();
+                data2 = getBigDecimalInput();
 
                 break;
             case 3:
                 System.out.println("What is the radius of the circle in centimeters?");
-                data1 = scanner.nextBigDecimal();
+                data1 = getBigDecimalInput();
 
                 break;
             default:
                 scanner.close();
 
                 throw new UnknownShapeException("Chosen shape does not exist.");
+        }
+    }
+
+    public static BigDecimal getBigDecimalInput()
+    {
+        while (true)
+        {
+            if (scanner.hasNextBigDecimal())
+            {
+                return scanner.nextBigDecimal();
+            }
+            else
+            {
+                System.out.println("You did not input a number! Try again:");
+
+                scanner.next(); // Clear out last line.
+            }
+        }
+    }
+
+    public static void getShapeInput()
+    {
+        while (true)
+        {
+            if (scanner.hasNextInt())
+            {
+                shapeIndex = scanner.nextInt();
+
+                if (shapeIndex <= 3 && shapeIndex >= 1)
+                {
+                    break;
+                }
+                else
+                {
+                    System.out.println("You must input a value between 1 and 3. Try again:");
+                }
+            }
+            else
+            {
+                System.out.println("You did not input a number! Try again:");
+
+                scanner.next(); // Clear out last line.
+            }
         }
     }
 
