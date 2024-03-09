@@ -5,7 +5,7 @@ import java.math.RoundingMode;
 
 public class Circle extends Shape
 {
-    public Circle(double radius)
+    public Circle(BigDecimal radius)
     {
         super(radius, radius);
     }
@@ -15,9 +15,10 @@ public class Circle extends Shape
     {
         super.calculateRectangleArea();
 
-        var circleArea = super.getArea() * Math.PI;
-        var roundedArea = new BigDecimal(circleArea).setScale(2, RoundingMode.UP);
+        BigDecimal squareArea = super.getArea();
+        BigDecimal circleArea = squareArea.multiply(BigDecimal.valueOf(Math.PI));
+        BigDecimal roundedArea = circleArea.setScale(2, RoundingMode.UP);
 
-        super.setArea(roundedArea.doubleValue());
+        super.setArea(roundedArea);
     }
 }

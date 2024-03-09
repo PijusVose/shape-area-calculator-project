@@ -1,12 +1,14 @@
 package swed.it.academy.project;
 
+import java.math.BigDecimal;
+
 public abstract class Shape
 {
-    private double area;
-    private double sideOneLength;
-    private double sideTwoLength;
+    private BigDecimal area;
+    private final BigDecimal sideOneLength;
+    private final BigDecimal sideTwoLength;
 
-    public Shape(double sideOneLength, double sideTwoLength)
+    public Shape(BigDecimal sideOneLength, BigDecimal sideTwoLength)
     {
         this.sideOneLength = sideOneLength;
         this.sideTwoLength = sideTwoLength;
@@ -16,7 +18,7 @@ public abstract class Shape
 
     public void calculateRectangleArea()
     {
-        this.area = sideOneLength * sideTwoLength;
+        this.area = sideOneLength.multiply(sideTwoLength);
     }
 
     @Override
@@ -25,12 +27,12 @@ public abstract class Shape
         return "The area of the shape is " + area + " square cm";
     }
 
-    public double getArea()
+    public BigDecimal getArea()
     {
         return area;
     }
 
-    public void setArea(double area)
+    public void setArea(BigDecimal area)
     {
         this.area = area;
     }

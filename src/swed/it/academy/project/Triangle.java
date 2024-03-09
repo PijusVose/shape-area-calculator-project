@@ -1,9 +1,12 @@
 package swed.it.academy.project;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class Triangle extends Shape
 {
 
-    public Triangle(double sideOneLength, double sideTwoLength)
+    public Triangle(BigDecimal sideOneLength, BigDecimal sideTwoLength)
     {
         super(sideOneLength, sideTwoLength);
     }
@@ -13,7 +16,8 @@ public class Triangle extends Shape
     {
         super.calculateRectangleArea();
 
-        var triangleArea = super.getArea() / 2;
+        BigDecimal squareArea = super.getArea();
+        BigDecimal triangleArea = squareArea.divide(BigDecimal.valueOf(2), RoundingMode.CEILING);
 
         super.setArea(triangleArea);
     }

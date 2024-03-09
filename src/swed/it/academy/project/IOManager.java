@@ -1,12 +1,13 @@
 package swed.it.academy.project;
 
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class IOManager
 {
     private static int shapeIndex;
-    private static double data1;
-    private static double data2;
+    private static BigDecimal data1;
+    private static BigDecimal data2;
 
     private static final Scanner scanner = new Scanner(System.in);
 
@@ -15,12 +16,12 @@ public class IOManager
         return shapeIndex;
     }
 
-    public static double getData1()
+    public static BigDecimal getData1()
     {
         return data1;
     }
 
-    public static double getData2()
+    public static BigDecimal getData2()
     {
         return data2;
     }
@@ -32,28 +33,29 @@ public class IOManager
         System.out.println("2 for Triangle");
         System.out.println("3 for Circle");
 
-        var rawInput = scanner.nextLine();
+        String rawInput = scanner.nextLine();
         shapeIndex = Integer.parseInt(rawInput);
     }
 
     public static void inputShapeInfo() throws UnknownShapeException
     {
-        switch (shapeIndex)
+    switch (shapeIndex)
         {
             case 1:
                 System.out.println("What is the edge length in centimeters?");
+                data1 = scanner.nextBigDecimal();
 
                 break;
             case 2:
                 System.out.println("What is the base length of the triangle in centimeters?");
-                data1 = scanner.nextDouble();
+                data1 = scanner.nextBigDecimal();
                 System.out.println("What is the height of the triangle in centimeters?");
-                data2 = scanner.nextDouble();
+                data2 = scanner.nextBigDecimal();
 
                 break;
             case 3:
                 System.out.println("What is the radius of the circle in centimeters?");
-                data1 = scanner.nextDouble();
+                data1 = scanner.nextBigDecimal();
 
                 break;
             default:
@@ -63,5 +65,11 @@ public class IOManager
         }
 
         scanner.close();
+    }
+
+    public static void printCalculatedArea(String area)
+    {
+        System.out.println(area);
+        System.out.println("-----------------");
     }
 }
