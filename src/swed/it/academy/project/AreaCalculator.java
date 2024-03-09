@@ -1,15 +1,27 @@
 package swed.it.academy.project;
 
+import java.util.Scanner;
+
 public class AreaCalculator
 {
+    private static boolean continueProgram = true;
+
     public static void main(String[] args)
     {
-        runCalculator();
+        while (continueProgram)
+        {
+            runCalculator();
+            outputResults();
+
+            if (!IOManager.shouldContinueProgram())
+            {
+                continueProgram = false;
+            }
+        }
     }
 
     private static void runCalculator()
     {
-        // TODO: run chooseShape and inputData.
         inputShapeData();
     }
 

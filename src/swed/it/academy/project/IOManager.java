@@ -63,13 +63,43 @@ public class IOManager
 
                 throw new UnknownShapeException("Chosen shape does not exist.");
         }
-
-        scanner.close();
     }
 
     public static void printCalculatedArea(String area)
     {
         System.out.println(area);
         System.out.println("-----------------");
+    }
+
+    public static boolean shouldContinueProgram()
+    {
+        if (scanner.hasNextLine())
+        {
+            scanner.nextLine();
+
+            System.out.println("Do you want to continue? [Y/N]");
+            var rawUserInput = scanner.nextLine();
+
+            if (!rawUserInput.equalsIgnoreCase("Y"))
+            {
+                scanner.close();
+
+                System.out.println("User does not want to continue, stopping calculator.");
+
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        else
+        {
+            System.out.println("Scanner has no next line.");
+
+            scanner.close();
+
+            return false;
+        }
     }
 }
