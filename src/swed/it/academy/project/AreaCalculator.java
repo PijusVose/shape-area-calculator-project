@@ -47,6 +47,7 @@ public class AreaCalculator
             case 1 -> { yield new Square(IOManager.getData1()); }
             case 2 -> { yield new Triangle(IOManager.getData1(), IOManager.getData2()); }
             case 3 -> { yield new Circle(IOManager.getData1()); }
+            case 4 -> { yield new Pentagon(IOManager.getData1()); }
             default -> { yield null; }
         };
 

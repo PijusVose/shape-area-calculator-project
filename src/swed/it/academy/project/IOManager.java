@@ -9,6 +9,8 @@ public class IOManager
     private static BigDecimal data1;
     private static BigDecimal data2;
 
+    private static final int MAX_SHAPES = 4;
+
     private static final Scanner scanner = new Scanner(System.in);
 
     public static int getShapeIndex()
@@ -32,6 +34,7 @@ public class IOManager
         System.out.println("1 for Square");
         System.out.println("2 for Triangle");
         System.out.println("3 for Circle");
+        System.out.println("4 for Pentagon");
 
         getShapeInput();
     }
@@ -40,6 +43,7 @@ public class IOManager
     {
     switch (shapeIndex)
         {
+            case 4:
             case 1:
                 System.out.println("What is the edge length in centimeters?");
                 data1 = getBigDecimalInput();
@@ -89,7 +93,7 @@ public class IOManager
             {
                 shapeIndex = scanner.nextInt();
 
-                if (shapeIndex <= 3 && shapeIndex >= 1)
+                if (shapeIndex <= MAX_SHAPES && shapeIndex >= 1)
                 {
                     break;
                 }
